@@ -10,15 +10,15 @@ export function App() {
   const isLogin = !!token;
   const routes = useRoutes(isLogin);
 
-  // useEffect(() => {
-  //   // ===== full screen =====
-  //   window.addEventListener('click', function () {
-  //     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-  //       // пользователь использует мобильное устройство
-  //       document.documentElement.requestFullscreen();
-  //     }
-  //   })
-  // }, [])
+  useEffect(() => {
+    // ===== full screen =====
+    window.addEventListener('click', function () {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        // пользователь использует мобильное устройство
+        document.documentElement.requestFullscreen();
+      }
+    })
+  }, [])
 
   return (
     <AuthContext.Provider value={{ login, logout, token, userId, isReady, isLogin, name, avatar }}>
