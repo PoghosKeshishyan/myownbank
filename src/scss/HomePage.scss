@@ -1,12 +1,11 @@
 @media (max-width: 800px) {
     .HomePage {
-        margin-top: 10px;
 
         h2 {
-            margin: 15px 0 30px 0;
+            margin: 5px 0 25px 0;
             font-family: 'Adamina', serif;
             color: var(--black-to-blue);
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: 3px;
             word-spacing: 6px;
@@ -17,25 +16,25 @@
         }
 
         .swiper-wrapper {
-            height: 13rem;
+            height: 12rem;
 
             .swiper-slide {
                 padding: 15px;
-                border-radius: 30px;
+                border-radius: 20px;
 
                 .heading {
                     display: flex;
                     justify-content: space-between;
 
                     .title {
-                        font-size: 1.4rem;
+                        font-size: 1.2rem;
                         font-weight: 600;
                         font-family: 'Amethysta', serif;
                     }
 
                     img {
                         margin-top: -5px;
-                        width: 48%;
+                        width: 45%;
                     }
                 }
 
@@ -46,14 +45,14 @@
                     margin: 30px 0;
 
                     img {
-                        width: 15%;
+                        width: 13%;
                         border: 1px solid;
                         border-radius: 5px;
                     }
 
                     .balans {
                         margin-left: 10px;
-                        font-size: 1.3rem;
+                        font-size: 1.2rem;
                         font-weight: 600;
                         font-family: 'Advent Pro', sans-serif;
 
@@ -68,15 +67,15 @@
                     justify-content: space-between;
 
                     .chipCode {
-                        font-size: 1.3rem;
+                        font-size: 1.2rem;
                         font-weight: bold;
                         letter-spacing: 1px;
                         font-family: 'Faustina', serif;
                     }
-                    
+
                     .nfcImg {
                         margin-right: 10px;
-                        width: 9%;
+                        width: 8%;
                     }
                 }
             }
@@ -85,8 +84,8 @@
         /* -------------- newCard -------------- */
         .addCard {
             width: 60%;
-            margin: 60px auto;
-            padding: 10px;
+            margin: 35px auto 0 auto;
+            padding: 8px 10px;
             border-radius: 20px;
             text-align: center;
             font-weight: bold;
@@ -98,15 +97,15 @@
             .heading {
                 display: flex;
                 justify-content: space-between;
-        
+
                 .title {
-                    font-size: .7rem;
+                    font-size: .6rem;
                     font-family: 'Amethysta', serif;
                 }
-        
+
                 img {
                     margin-top: -3px;
-                    width: 40%;
+                    width: 35%;
                 }
             }
 
@@ -114,7 +113,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-                margin: 20px 0;
+                margin: 10px 0 18px 0;
                 font-family: 'Advent Pro', sans-serif;
 
                 img {
@@ -122,14 +121,15 @@
                     border: 1px solid;
                     border-radius: 5px;
                     margin-right: 5px;
-                    
-                    .balans {
-                        margin-left: 10px;
-                        font-size: .7rem;
-                        font-weight: 600;
-                        font-family: 'Advent Pro', sans-serif;
-                    }
-            
+                }
+
+                
+                .balans {
+                    margin-left: 2px;
+                    font-size: .8rem;
+                    font-weight: 600;
+                    font-family: 'Advent Pro', sans-serif;
+
                     span {
                         font-family: 'Delius', cursive;
                     }
@@ -140,7 +140,7 @@
                 display: flex;
                 justify-content: space-between;
                 margin-top: -10px;
-        
+
                 .chipCode {
                     margin-top: 8px;
                     font-size: .6rem;
@@ -148,7 +148,7 @@
                     letter-spacing: 1px;
                     font-family: 'Faustina', serif;
                 }
-        
+
                 .nfcImg {
                     width: 6%;
                     height: 10%;

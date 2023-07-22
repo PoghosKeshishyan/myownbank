@@ -128,7 +128,7 @@
             text-align: end;
 
             .logo {
-                width: 60%;
+                width: 55%;
                 margin: -12px -12px 0 0;
                 display: inline-block;
 
@@ -139,27 +139,23 @@
 
             .userName {
                 display: flex;
-                gap: 1rem;
+                gap: .5rem;
                 align-items: center;
                 justify-content: flex-end;
 
                 p {
                     font-family: 'Delius', cursive;
-                    font-size: 1.5rem;
+                    font-size: 1.3rem;
                     font-weight: bold;
                     color: var(--blue-to-white);
-                }
-
-                img {
-                    width: 20%;
                 }
 
                 .avatar {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: 43px;
-                    height: 43px;
+                    width: 40px;
+                    height: 40px;
                     border: 2px solid var(--red);
                     border-radius: 50%;
                     background-color: var(--white);

@@ -7,7 +7,7 @@ export function EditCardPage() {
   const [card, setCard] = useState({});
   const [inputValue, setInputValue] = useState('');
   const [bgColor, setBgColor] = useState('');
-  const { id } = useParams();
+  const { id, index } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export function EditCardPage() {
 
   return (
     <>
-      <i className='fa-regular fa-circle-left' onClick={() => navigate(-1)} />
+      <i className='fa-solid fa-house' onClick={() => navigate('/')} />
 
 
       {card._id &&
@@ -93,16 +93,13 @@ export function EditCardPage() {
               </div>
 
               <div className='code'>
-                <p className='chipCode'>**** **** **** 000
-                  {/* {card.id} */}
+                <p className='chipCode'>**** **** **** 000{Number(index)+1}
                 </p>
                 <img src='/images/nfc.png' className='nfcImg' alt='nfc' />
               </div>
             </div>
 
             <div className='editColors'>
-              <h2>Change your card color</h2>
-
               <div className='content' onClick={changeBgColorHandler} >
                 <div style={{ backgroundColor: 'rgb(168 162 158)' }} />
                 <div style={{ backgroundColor: 'rgb(255 255 255)' }} />

@@ -16,8 +16,15 @@ export function HomePage() {
     loadingData();
   }, []);
 
+  useEffect(() => {
+    // sum for total varible
+    let sum = 0;
+    cards.forEach(el => sum += el.card[0].price);
+    setTotalSum(sum);
+  }, [cards])
+
   const loadingData = async () => {
-    
+
     try {
 
       await axios.get('api/cards/', {
@@ -30,17 +37,11 @@ export function HomePage() {
         setCards(res.data);
         setLoading(false);
       })
-      
+
 
     } catch (error) {
       console.log(error);
     }
-
-
-    // sum for total varible
-    let sum = 0;
-    cards.forEach(el => sum += el.card[0].price);
-    setTotalSum(sum);
 
   }
 

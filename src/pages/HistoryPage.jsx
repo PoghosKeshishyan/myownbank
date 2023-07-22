@@ -95,7 +95,7 @@ export function HistoryPage() {
                     <div className='editTools'>
                         <i
                             className='fa-solid fa-pen-to-square'
-                            onClick={() => navigate(`/card/edit/${id}`)}
+                            onClick={() => navigate(`/card/edit/${id}/${index}`)}
                         />
 
                         <i className='fa-solid fa-trash' onClick={submitDeleteCard}></i>

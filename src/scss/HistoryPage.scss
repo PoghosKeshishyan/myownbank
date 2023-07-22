@@ -1,29 +1,30 @@
 @media (max-width: 800px) {
     .HistoryPage {
-        margin-top: 20px;
+        margin-top: 5px;
 
         /* -------------- edit tools -------------- */
         .editTools {
             text-align: end;
 
             i {
-                font-size: 1.5rem;
-                margin: 5px 5px 5px 10px;
+                font-size: 1.2rem;
+                margin: 8px 0px 5px 10px;
             }
 
             .fa-pen-to-square {
                 color: var(--blue-to-white);
             }
-
+            
             .fa-trash {
                 color: var(--red);
+                margin-right: 5px;
             }
         }
 
         /* -------------- card -------------- */
         .card {
-            margin: 10px 0 20px 0;
-            padding: 15px 15px 25px 15px;
+            margin: 8px 0 17px 0;
+            padding: 20px 20px 25px 20px;
             border-radius: 30px;
 
             .heading {
@@ -31,14 +32,14 @@
                 justify-content: space-between;
 
                 .title {
-                    font-size: 1.4rem;
+                    font-size: 1.2rem;
                     font-weight: 600;
                     font-family: 'Amethysta', serif;
                 }
 
                 img {
                     margin-top: -5px;
-                    width: 48%;
+                    width: 40%;
                 }
         
             }
@@ -47,17 +48,17 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-                margin: 30px 0 35px 0;
+                margin: 25px 0 25px 0;
 
                 img {
-                    width: 15%;
+                    width: 13%;
                     border: 1px solid;
                     border-radius: 5px;
                 }
 
                 .balans {
                     margin-left: 10px;
-                    font-size: 1.3rem;
+                    font-size: 1.1rem;
                     font-weight: 600;
                     font-family: 'Advent Pro', sans-serif;
 
@@ -73,7 +74,7 @@
                 justify-content: space-between;
     
                 .chipCode {
-                    font-size: 1.3rem;
+                    font-size: 1.2rem;
                     font-weight: bold;
                     letter-spacing: 1px;
                     font-family: 'Faustina', serif;
@@ -81,7 +82,7 @@
 
                 .nfcImg {
                     margin-right: 15px;
-                    width: 9%;
+                    width: 7%;
                 }
             }
         }
@@ -90,10 +91,10 @@
         .history {
             .heading {
                 margin-bottom: 5px;
-                padding: 8px 10px;
+                padding: 5px 10px;
                 font-family: 'Marcellus', serif;
                 font-weight: 600;
-                font-size: 1.5rem;
+                font-size: 1.3rem;
                 text-align: center;
                 color: var(--black);
                 border-radius: 15px;
@@ -102,7 +103,7 @@
             }
 
             .box-container {
-                max-height: 190px;
+                max-height: 150px;
                 overflow-y: scroll;
 
                 &::-webkit-scrollbar {
@@ -113,13 +114,13 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    margin: 15px 0;
+                    margin: 5px 0;
                     padding: 9px 10px;
                     border-radius: 15px;
                     background-color: var(--sky-alpha);
 
                     img {
-                        width: 8%;
+                        width: 7%;
                         margin-right: 10px;
                     }
             

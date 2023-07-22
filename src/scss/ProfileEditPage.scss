@@ -1,10 +1,9 @@
 @media (max-width: 800px) {
     .ProfileEditPage {
-        margin-top: 10px;
         text-align: center;
 
         .title {
-            margin-top: 10px;
+            margin-top: 5px;
             color: var(--red);
             font-weight: bold;
             text-align: left;
@@ -23,7 +22,7 @@
 
         .name {
             border-bottom: 2px dotted;  
-            padding-bottom: 7px;
+            padding-bottom: 5px;
         }
 
         .pinBox {
@@ -42,7 +41,7 @@
             align-items: center;
 
             .avatar {
-                margin-top: 10px;
+                margin-top: 5px;
                 padding: 5px;
                 border-radius: 50%;
                 background-color: var(--white);
@@ -60,7 +59,7 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            margin: 20px 0 10px 0;
+            margin: 10px 0;
 
             i {
                 font-size: 1.5rem;
