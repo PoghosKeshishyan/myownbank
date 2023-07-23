@@ -3,11 +3,15 @@ import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import '../scss/LoginPage.scss';
 import axios from '../axios';
+import { Modal_v2 } from '../components/Modal_v2';
 
 export function LoginPage() {
     const [newUser, setNewUser] = useState({
         email: '', password: '',
     })
+
+    const [modal, setModal] = useState(false);
+    const [modalText, setModalText] = useState('');
 
     const defaultData =  [
         { "id": 1, "title": "Savings", "price": 0, "bgColor": "#ff6262", "history": [] },
@@ -54,7 +58,7 @@ export function LoginPage() {
             .then((response) => {
                 login(response.data.token, response.data.userId, response.data.user.name, response.data.user.avatar);
             })
-            .catch(err => alert(err.response.data.message));                
+            .catch(err => {setModal(true); setModalText(err.response.data.message)});                
         } catch (error) {
             console.log(error);
         }
@@ -64,6 +68,10 @@ export function LoginPage() {
 
     return (
         <div className='LoginPage'>
+
+            <Modal_v2 modal={modal} setModal={setModal} modalText={modalText} />
+
+
             <div className='logo-auth'>
                 <img src='/images/logo.png' alt='logo' />
             </div>

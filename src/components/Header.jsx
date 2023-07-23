@@ -8,13 +8,18 @@ import { AuthContext } from '../context/AuthContext';
 export function Header() {
     const [user, setUser] = useState({});
     const [modal, setModal] = useState(false);
+    const [cards, setCards] = useState([]);
+
+    const [modalDeleteAccount, setModalDeleteAccount] = useState(false);
+    const [confirmDeleteAccountModal, setConfirmDeleteAccountModal] = useState(false)
+
     const [menuOpened, setMenuOpened] = useState(false);
     const [settingsOpened, setSettingsOpened] = useState(false);
     const [inputChecked, setInputChecked] = useState(false);
     const navRef = useRef(null);
     const settRef = useRef(null);
 
-    const {name, avatar, logout} = useContext(AuthContext);
+    const { name, avatar, logout, userId } = useContext(AuthContext);
 
     useEffect(() => {
         loadingData();
@@ -22,6 +27,27 @@ export function Header() {
     }, [])
 
     async function loadingData() {
+
+
+        try {
+
+            await axios.get('api/cards/', {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                // sa beq e gnum, ev darnum e req.query
+                params: { userId }
+            }).then(res => {
+                setCards(res.data);
+            })
+
+
+        } catch (error) {
+            console.log(error);
+        }
+
+
+
         // const response = await axios.get('user');
         // setUser(response.data);
 
@@ -65,6 +91,34 @@ export function Header() {
         setInputChecked(!inputChecked);
     }
 
+    const deleteAccountFunction = async () => {
+        let sum = 0;
+
+        for (let i = 0; i < cards.length; i++) {
+            sum += cards[i].card[0].price;
+        }
+
+        if (sum === 0) {
+            setSettingsOpened(false);
+            setConfirmDeleteAccountModal(true);
+            return;
+        }
+
+        setSettingsOpened(false)
+        setModalDeleteAccount(true);
+    }
+
+    const confirmDeleteAccountFunction = async() => {
+        await axios.delete(`api/auth/delete/user/${userId}`, { 
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }).then(() => {
+            logout();
+        })
+      
+    }
+
     return (
         <React.Fragment>
             <div className={modal ? 'modal activeModal' : 'modal'}>
@@ -80,11 +134,37 @@ export function Header() {
                 </div>
             </div>
 
+            {/* ============= delete account modal ============= */}
+            <div className={modalDeleteAccount ? 'modal activeModal' : 'modal'}>
+                <div className='modalBackground' onClick={() => setModalDeleteAccount(false)}></div>
+
+                <div className='modalBody'>
+                    <p>There is money on your cards. You cannot delete this account. Transfer the money to another account and try to delete the account again.
+                    </p>
+                    <div className='buttonsModal'>
+                        <button onClick={()=>setModalDeleteAccount(false)} className='modal_btn_yes'>Ok</button>
+                    </div>
+                </div>
+            </div>
+
+            {/* ============= confirm delete account modal ============= */}
+            <div className={confirmDeleteAccountModal ? 'modal activeModal' : 'modal'}>
+                <div className='modalBackground' onClick={() => setConfirmDeleteAccountModal(false)}></div>
+
+                <div className='modalBody'>
+                    <p>Are you sure? that you want to delete your account?</p>
+
+                    <div className='buttonsModal'>
+                        <button onClick={confirmDeleteAccountFunction} className='modal_btn_yes'>Yes</button>
+                        <button className='modal_btn_cancel' onClick={() => setConfirmDeleteAccountModal(false)}>Cancel</button>
+                    </div>
+                </div>
+            </div>
             <header>
-                <i 
-                  ref={navRef} 
-                  className='fa-solid fa-bars' 
-                  onClick={() => setMenuOpened(!menuOpened)} 
+                <i
+                    ref={navRef}
+                    className='fa-solid fa-bars'
+                    onClick={() => setMenuOpened(!menuOpened)}
                 />
 
                 <nav className={menuOpened ? 'menuBar activeMenuBar' : 'menuBar'}>
@@ -125,6 +205,10 @@ export function Header() {
                     <div className='switch'>
                         Dark mode
                         <input type='checkbox' className='settInput' checked={inputChecked} onChange={darkModeFunc} />
+                    </div>
+
+                    <div className='deleteAccount' onClick={deleteAccountFunction}>
+                        <p>Delete my account</p>
                     </div>
                 </div>
 

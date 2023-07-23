@@ -63,7 +63,7 @@
             z-index: 1000;
             clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 
-            a {
+            a, p {
                 display: flex;
                 text-align: center;
                 margin: 10px 10px;
@@ -71,6 +71,10 @@
                 font-weight: bold;
                 color: var(--blue);
                 font-family: 'Marcellus', serif;
+            }
+
+            p {
+                color: var(--red);
             }
 
             .switch {

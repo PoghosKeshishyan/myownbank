@@ -84,7 +84,7 @@ export function HistoryPage() {
                 <div className='modalBackground' onClick={() => setModalFullCash(false)}></div>
 
                 <div className='modalBody'>
-                    <p>There is money on your card. You cannot delete this card. Transfer the money to another account and try to delete the money again.</p>
+                    <p>There is money on your card. You cannot delete this card. Transfer the money to another account and try to delete the card again.</p>
                     <button className='modal_btn_yes' onClick={() => setModalFullCash(false)}>Ok</button>
                 </div>
             </div>

@@ -87,8 +87,8 @@ export function TransferPage() {
     cardTo.card[0].price += Number(input);
     
     const today = new Date().toISOString().split('T')[0];
-    const newFromHistory = [`to ${cardFrom.card[0].title}`, today, `-$${input}`];
-    const newToHistory = [`from ${cardTo.card[0].title}`, today, `+$${input}`];
+    const newFromHistory = [`to ${cardTo.card[0].title}`, today, `-$${input}`];
+    const newToHistory = [`from ${cardFrom.card[0].title}`, today, `+$${input}`];
 
     cardFrom.card[0].history = [newFromHistory, ...cardFrom.card[0].history];
     cardTo.card[0].history = [newToHistory, ...cardTo.card[0].history];
