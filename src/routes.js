@@ -18,8 +18,8 @@ export function useRoutes(isLogin) {
         return (
             <Routes>
                 <Route path='/' element={<HomePage />} />
-                <Route path='/card/:id/:index' element={<HistoryPage />} />
-                <Route path='/card/edit/:id/:index' element={<EditCardPage />} />
+                <Route path='/card/:id' element={<HistoryPage />} />
+                <Route path='/card/edit/:id' element={<EditCardPage />} />
                 <Route path='/card/add' element={<AddCardPage />} />
                 <Route path='/cash' element={<CashPage />} />
                 <Route path='/transfer' element={<TransferPage />} />

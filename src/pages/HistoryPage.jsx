@@ -7,7 +7,7 @@ export function HistoryPage() {
     const [card, setCard] = useState({});
     const [modal, setModal] = useState(false);
     const [modalFullCash, setModalFullCash] = useState(false);
-    const { id, index } = useParams();
+    const { id } = useParams();
     const navigate = useNavigate();
 
 
@@ -95,7 +95,7 @@ export function HistoryPage() {
                     <div className='editTools'>
                         <i
                             className='fa-solid fa-pen-to-square'
-                            onClick={() => navigate(`/card/edit/${id}/${index}`)}
+                            onClick={() => navigate(`/card/edit/${id}`)}
                         />
 
                         <i className='fa-solid fa-trash' onClick={submitDeleteCard}></i>
@@ -119,8 +119,9 @@ export function HistoryPage() {
                         </div>
 
                         <div className='code'>
-                            <p className='chipCode'>**** **** **** 000{Number(index) + 1}
-                            </p>
+                            {/* <p className='chipCode'>**** **** **** 000{Number(index) + 1} */}
+                            {/* </p> */}
+                            <p className='chipCode'>{card.cardNumber}</p>
                             <img src='/images/nfc.png' className='nfcImg' alt='nfc' />
                         </div>
                     </div>

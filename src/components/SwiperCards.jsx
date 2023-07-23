@@ -22,7 +22,7 @@ export function SwiperCards({cards}) {
                         key={el._id}
                         style={{ background: el.card[0].bgColor }}
                         className='swiper-slide'
-                        onClick={() => navigate(`/card/${el._id}/${index}`)}
+                        onClick={() => navigate(`/card/${el._id}`)}
                     >
                         <div className='heading'>
                             <p className='title'>{el.card[0].title}</p>
@@ -35,7 +35,7 @@ export function SwiperCards({cards}) {
                         </div>
 
                         <div className='code'>
-                            <p className='chipCode'>**** **** **** 000{index+1}</p>
+                            <p className='chipCode'>{el.cardNumber}</p>
                             <img src='/images/nfc.png' className='nfcImg' alt='nfc' />
                         </div>
                     </SwiperSlide>

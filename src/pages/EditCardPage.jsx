@@ -7,7 +7,7 @@ export function EditCardPage() {
   const [card, setCard] = useState({});
   const [inputValue, setInputValue] = useState('');
   const [bgColor, setBgColor] = useState('');
-  const { id, index } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -93,8 +93,9 @@ export function EditCardPage() {
               </div>
 
               <div className='code'>
-                <p className='chipCode'>**** **** **** 000{Number(index)+1}
-                </p>
+                {/* <p className='chipCode'>**** **** **** 000{Number(index)+1} */}
+                {/* </p> */}
+                <p className='chipCode'>{card.cardNumber}</p>
                 <img src='/images/nfc.png' className='nfcImg' alt='nfc' />
               </div>
             </div>
