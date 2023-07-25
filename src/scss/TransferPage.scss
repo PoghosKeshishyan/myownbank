@@ -1,7 +1,26 @@
 @media (max-width: 800px) {
     .TransferPage {
-        margin-top: 50px;
         text-align: center;
+
+        .contorolBtns {
+            display: flex;
+            align-items: center;
+            justify-content: center;            
+            gap: .3rem;
+            margin: 20px 0 13px 0;
+
+            button {
+                background: none;
+                padding: 5px 5px;
+                border-radius: 5px;
+                font-family: 'Noto Sans Syloti Nagri', sans-serif; 
+
+                &.active {
+                    background: var(--slate-500);
+                    color: var(--white);
+                }
+            }
+        }
 
         .box {
             display: flex;
@@ -48,6 +67,52 @@
             margin-top: 20px;
             color: var(--white-to-blue);
             background-color: var(--blue-to-white);
+        }
+
+
+        .transferToFriends {
+            margin: 10px 0 0 0;
+
+            p {
+               font-family: 'Noto Sans Syloti Nagri', sans-serif; 
+               font-size: 1.2rem;
+               font-weight: bold;
+               color: var(--black-to-white);
+            }
+
+            input{ 
+                border: 1px solid var(--blue);
+                margin: 20px 0 10px 0;
+                font-size: 1rem;
+                padding: 5px;
+                border-radius: 6px;
+                margin-left: 5px;
+            }
+
+            .btn {
+                padding: 3.5px 10px;
+            }
+        }
+
+        .users {
+            height: 245px;
+            overflow-y: auto;
+
+            .user {
+                margin: 5px 0;
+                padding-bottom: 5px;
+                text-align: left;
+                border-bottom: 1px solid var(--slate-500);
+                font-family: 'Noto Sans Syloti Nagri', sans-serif; 
+                color: var(--black-to-white);        
+
+                .btn {
+                    margin: 3px 0;
+                    padding: 0 10px;
+                    font-size: .9rem;
+                }
+            }
+  
         }
     }
 }

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../scss/TransferPage.scss';
 import axios from '../axios';
 import { AuthContext } from '../context/AuthContext';
@@ -7,6 +7,8 @@ import { AuthContext } from '../context/AuthContext';
 export function TransferPage() {
   const [modal, setModal] = useState(false);
   const [modalText, setModalText] = useState('');
+
+  const [users, setUsers] = useState([]);
 
   const [cards, setCards] = useState([]);
   const [cardFrom, setCardFrom] = useState({});
@@ -16,9 +18,16 @@ export function TransferPage() {
   const [input, setInput] = useState('');
   const navigate = useNavigate();
 
-  const {userId} = useContext(AuthContext);
 
-  useEffect(() => {loadingDatas()}, []);
+  const [inputWitfTransferTofriends, setInputWitfTransferTofriends] = useState('Mariam');
+
+
+  const [activeRoute, setActiveRoute] = useState(false);
+
+
+  const { userId } = useContext(AuthContext);
+
+  useEffect(() => { loadingDatas() }, []);
   const handleModalYesBtn = () => setModal(false);
 
 
@@ -33,7 +42,7 @@ export function TransferPage() {
   }
 
 
-  const loadingDatas = async() => {
+  const loadingDatas = async () => {
     // if (localStorage.getItem('myOwnBank_data')) {
     //   const result = JSON.parse(localStorage.getItem('myOwnBank_data'));
     //   setDatas(result);
@@ -51,7 +60,7 @@ export function TransferPage() {
       }).then(res => {
         setCards(res.data);
       })
-      
+
 
     } catch (error) {
       console.log(error);
@@ -60,7 +69,7 @@ export function TransferPage() {
 
   };
 
-  const onSubmit = async(e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (!input || input < 0) {
@@ -85,7 +94,7 @@ export function TransferPage() {
 
     cardFrom.card[0].price -= input;
     cardTo.card[0].price += Number(input);
-    
+
     const today = new Date().toISOString().split('T')[0];
     const newFromHistory = [`to ${cardTo.card[0].title}`, today, `-$${input}`];
     const newToHistory = [`from ${cardFrom.card[0].title}`, today, `+$${input}`];
@@ -94,13 +103,13 @@ export function TransferPage() {
     cardTo.card[0].history = [newToHistory, ...cardTo.card[0].history];
 
 
-    await axios.put(`api/cards/cash/card/${cardFrom._id}`, {card: cardFrom}, {
+    await axios.put(`api/cards/cash/card/${cardFrom._id}`, { card: cardFrom }, {
       headers: {
         'Content-Type': 'application/json',
       }
     })
 
-    await axios.put(`api/cards/cash/card/${cardTo._id}`, {card: cardTo}, {
+    await axios.put(`api/cards/cash/card/${cardTo._id}`, { card: cardTo }, {
       headers: {
         'Content-Type': 'application/json',
       }
@@ -110,6 +119,26 @@ export function TransferPage() {
     navigate('/');
   }
 
+  const transferToFriendsHandler = async (e) => {
+    e.preventDefault();
+
+    if (!inputWitfTransferTofriends.trim()) return;
+
+    await axios.get(`api/auth`, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(response => {
+
+      const allUsers = response.data;
+      const inputValue = inputWitfTransferTofriends.toLowerCase();
+
+      const newUsers = allUsers.filter(user => user.name.toLowerCase().includes(inputValue));
+      setUsers(newUsers);
+
+    })
+
+  }
 
 
   return (
@@ -126,47 +155,101 @@ export function TransferPage() {
       </div>
 
       <div className="TransferPage">
-        <form onSubmit={onSubmit}>
-          <div className="box">
-            <p className='text'>From</p>
+        <div className="contorolBtns">
+          <button
+            className={activeRoute ? 'active' : ''}
+            onClick={() => setActiveRoute(!activeRoute)}
+          >
+            Transfer betwen my account
+          </button>
 
-            <select
-              className='selectTransfer'
-              defaultValue="Accounts"
-              onChange={onChangeSelectFrom}
-            >
-              <option value="Accounts" disabled="disabled">Accounts</option>
-              {cards.map((el, index) => <option value={el._id} key={el._id}>{el.card[0].title}</option>)}
-            </select>
-          </div>
 
-          <div className="box">
-            <p className='text'>To</p>
+          <button
+            className={!activeRoute ? 'active' : ''}
+            onClick={() => setActiveRoute(!activeRoute)}
+          >
+            Transfer to friends
+          </button>
+        </div>
 
-            <select
-              className='selectTransfer'
-              defaultValue="Accounts"
-              onChange={onChangeSelectTo}
-            >
-              <option value="Accounts" disabled="disabled">Accounts</option>
-              {cards.map((el, index) => <option value={el._id} key={el._id}>{el.card[0].title}</option>)}
-            </select>
-          </div>
+        {
+          activeRoute &&
+          <form onSubmit={onSubmit}>
+            <div className="box">
+              <p className='text'>From</p>
 
-          <div className="box">
-            <p className='text'>Amount</p>
+              <select
+                className='selectTransfer'
+                defaultValue="Accounts"
+                onChange={onChangeSelectFrom}
+              >
+                <option value="Accounts" disabled="disabled">Accounts</option>
+                {cards.map((el, index) => <option value={el._id} key={el._id}>{el.card[0].title}</option>)}
+              </select>
+            </div>
 
-            <input
-              type="number"
-              className='inputTransfer'
-              value={input}
-              placeholder='0.00'
-              onChange={e => setInput(e.target.value)}
-            />
-          </div>
+            <div className="box">
+              <p className='text'>To</p>
 
-          <button className='btn'>Send</button>
-        </form>
+              <select
+                className='selectTransfer'
+                defaultValue="Accounts"
+                onChange={onChangeSelectTo}
+              >
+                <option value="Accounts" disabled="disabled">Accounts</option>
+                {cards.map((el, index) => <option value={el._id} key={el._id}>{el.card[0].title}</option>)}
+              </select>
+            </div>
+
+            <div className="box">
+              <p className='text'>Amount</p>
+
+              <input
+                type="number"
+                className='inputTransfer'
+                value={input}
+                placeholder='0.00'
+                onChange={e => setInput(e.target.value)}
+              />
+            </div>
+
+            <button className='btn'>Send</button>
+          </form>
+        }
+
+        {
+          !activeRoute &&
+          <>
+            <form className='transferToFriends' onSubmit={transferToFriendsHandler}>
+
+              <p>Search your friend name <br /> with name of account</p>
+
+              <input type="text"
+                value={inputWitfTransferTofriends}
+                onChange={e => setInputWitfTransferTofriends(e.target.value)}
+              />
+
+              <input type="submit" value='Search' className='btn' />
+
+            </form>
+
+            <div className='users'>
+
+              {
+                users.map((user, index) => <div className='user' key={index}>
+                  <p> <b>User Name:</b> {user.name}</p>
+                  <p> <b>Email:</b> {user.email}</p>
+                  <button className='btn' onClick={() => navigate('/transfer-to-friend/' + user._id)}>
+                    Select account
+                  </button>
+                </div>)
+              }
+
+            </div>
+
+          </>
+
+        }
       </div>
 
     </>

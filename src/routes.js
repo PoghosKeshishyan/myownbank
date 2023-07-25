@@ -12,6 +12,7 @@ import { LoginPage } from './pages/LoginPage';
 import { ProfileEditPage } from './pages/ProfileEditPage';
 import { SupportPage } from './pages/SupportPage';
 import { ForgotPinCode } from './pages/ForgotPinCodePage';
+import { TransferToFriendPage } from './pages/TransferToFriendPage';
 
 export function useRoutes(isLogin) {
     if (isLogin) {
@@ -23,6 +24,7 @@ export function useRoutes(isLogin) {
                 <Route path='/card/add' element={<AddCardPage />} />
                 <Route path='/cash' element={<CashPage />} />
                 <Route path='/transfer' element={<TransferPage />} />
+                <Route path='/transfer-to-friend/:id' element={<TransferToFriendPage />} />
                 <Route path='/edit/profile' element={<ProfileEditPage />} />
                 <Route path='/about' element={<AboutPage />} />
                 <Route path='/support' element={<SupportPage />} />
