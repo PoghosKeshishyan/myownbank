@@ -19,10 +19,10 @@ export function TransferPage() {
   const navigate = useNavigate();
 
 
-  const [inputWitfTransferTofriends, setInputWitfTransferTofriends] = useState('Mariam');
+  const [inputWitfTransferTofriends, setInputWitfTransferTofriends] = useState('');
 
 
-  const [activeRoute, setActiveRoute] = useState(false);
+  const [activeRoute, setActiveRoute] = useState(true);
 
 
   const { userId } = useContext(AuthContext);

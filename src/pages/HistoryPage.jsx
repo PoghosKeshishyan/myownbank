@@ -92,15 +92,21 @@ export function HistoryPage() {
             {
                 card._id &&
                 <div className='HistoryPage' data-aos='zoom-in'>
-                    <div className='editTools'>
-                        <i
-                            className='fa-solid fa-pen-to-square'
-                            onClick={() => navigate(`/card/edit/${id}`)}
-                        />
+                    {
+                        card.card[0].title !== 'Savings' &&
+                        card.card[0].title !== 'Donations' &&
+                        card.card[0].title !== 'Goals' &&
 
-                        <i className='fa-solid fa-trash' onClick={submitDeleteCard}></i>
-                    </div>
+                        <div className='editTools'>
+                            <i
+                                className='fa-solid fa-pen-to-square'
+                                onClick={() => navigate(`/card/edit/${id}`)}
+                            />
 
+                            <i className='fa-solid fa-trash' onClick={submitDeleteCard}></i>
+                        </div>
+                    }
+                    
                     <div className='card'
                         style={{ background: card.card[0].bgColor }}
                     >

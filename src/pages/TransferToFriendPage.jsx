@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from '../context/AuthContext';
+import '../scss/TransferToFriendPage.scss';
 import axios from '../axios';
 
 export function TransferToFriendPage() {
@@ -43,7 +44,7 @@ export function TransferToFriendPage() {
         }
     };
 
-    const submitHandler = async(e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
 
         if (Number(input) > card.card[0].price) {
@@ -52,7 +53,7 @@ export function TransferToFriendPage() {
         }
 
 
-        await axios.post('api/auth/transfer/user/' + card._id, {friendUserId: id, input, card}, {
+        await axios.post('api/auth/transfer/user/' + card._id, { friendUserId: id, input, card, userId }, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -74,29 +75,42 @@ export function TransferToFriendPage() {
                 </div>
             </div>
 
-            <p>Write how much money you want to transfer to your friend's account.</p>
-            <h2>
-                <i className="fa-solid fa-triangle-exclamation"></i>
-                Warning
-            </h2>
-
-            <p>Your transferred amount will be transferred to your friend's "Savings" card.</p>
-
             <form onSubmit={submitHandler}>
                 <p>Choose from which of your account the money should be transferred.</p>
-                <select
-                    className='selectTransfer'
-                    defaultValue="Accounts"
-                    onChange={onChangeSelect}
-                >
-                    <option value="Accounts" disabled="disabled">Accounts</option>
-                    {cards.map((el, index) => <option value={el._id} key={el._id}>{el.card[0].title}</option>)}
-                </select>
 
-                <p>Amount of money</p>
-                <input type="number" value={input} disabled={editInput} onChange={e => setInput(e.target.value)} />
-                <input type="submit" value="Send" className="btn" />
+                <div className="inner">
+                    <select
+                        className='selectTransfer'
+                        defaultValue="Accounts"
+                        onChange={onChangeSelect}
+                    >
+                        <option value="Accounts" disabled="disabled">Accounts</option>
+                        {cards.map((el, index) => <option value={el._id} key={el._id}>{el.card[0].title}</option>)}
+                    </select>
+
+                    <input
+                        type='number'
+                        value={input}
+                        placeholder='0.00'
+                        disabled={editInput}
+                        onChange={e => setInput(e.target.value)}
+                    />
+
+                    <input type="submit" value="Send" className="btn" />
+                </div>
             </form>
+
+            <div className="content">
+                <p>Write how much money you want to transfer to your friend's account.</p>
+
+                <h2>
+                    <i className="fa-solid fa-triangle-exclamation"></i>
+                    Warning
+                </h2>
+
+                <p>Your transferred amount will be transferred to your friend's "Savings" card.</p>
+            </div>
+
         </div>
     )
 }

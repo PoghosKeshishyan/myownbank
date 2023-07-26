@@ -111,7 +111,7 @@ export function CashOut() {
           onChange={e => setInput(e.target.value)}
         />
 
-        <button className='cashInputButton'>Send</button>
+        <button className='cashInputButton'>Out</button>
       </form>
     </>
   )
