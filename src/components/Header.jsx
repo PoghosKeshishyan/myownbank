@@ -108,15 +108,15 @@ export function Header() {
         setModalDeleteAccount(true);
     }
 
-    const confirmDeleteAccountFunction = async() => {
-        await axios.delete(`api/auth/delete/user/${userId}`, { 
+    const confirmDeleteAccountFunction = async () => {
+        await axios.delete(`api/auth/delete/user/${userId}`, {
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             }
-          }).then(() => {
+        }).then(() => {
             logout();
         })
-      
+
     }
 
     return (
@@ -142,7 +142,7 @@ export function Header() {
                     <p>There is money on your cards. You cannot delete this account. Transfer the money to another account and try to delete the account again.
                     </p>
                     <div className='buttonsModal'>
-                        <button onClick={()=>setModalDeleteAccount(false)} className='modal_btn_yes'>Ok</button>
+                        <button onClick={() => setModalDeleteAccount(false)} className='modal_btn_yes'>Ok</button>
                     </div>
                 </div>
             </div>
@@ -212,19 +212,25 @@ export function Header() {
                     </div>
                 </div>
 
+
+
                 <div className='user'>
-                    <div className='logo'>
-                        <Link to='/'> <img src='/images/logo.png' alt='logo' /> </Link>
-                    </div>
-
-                    <div className='userName'>
-                        <p>{name}</p>
-
-                        <div className='avatar'>
-                            <i className={avatar}></i>
+                    <Link to='/'>
+                        <div className='logo'>
+                            <img src='/images/logo.png' alt='logo' />
                         </div>
-                    </div>
+
+                        <div className='userName'>
+                            <p>{name}</p>
+
+                            <div className='avatar'>
+                                <i className={avatar}></i>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
+
+
             </header>
         </React.Fragment>
     )

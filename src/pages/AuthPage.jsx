@@ -94,6 +94,7 @@ export function AuthPage() {
                 />
 
                 <p>Enter your password *</p>
+                <p>(min 6 symbol)</p>
                 <div className='pinBox'>
                     <input
                         required

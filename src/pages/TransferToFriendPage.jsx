@@ -52,7 +52,6 @@ export function TransferToFriendPage() {
             return setModalText('You cannot select a number greater than the value.');
         }
 
-
         await axios.post('api/auth/transfer/user/' + card._id, { friendUserId: id, input, card, userId }, {
             headers: {
                 'Content-Type': 'application/json',
@@ -101,16 +100,8 @@ export function TransferToFriendPage() {
             </form>
 
             <div className="content">
-                <p>Write how much money you want to transfer to your friend's account.</p>
-
-                <h2>
-                    <i className="fa-solid fa-triangle-exclamation"></i>
-                    Warning
-                </h2>
-
-                <p>Your transferred amount will be transferred to your friend's "Savings" card.</p>
+                <p>Write how much money you want to transfer to your friend's account. Your transferred amount will be transferred to your friend's "Savings" card.</p>
             </div>
-
         </div>
     )
 }

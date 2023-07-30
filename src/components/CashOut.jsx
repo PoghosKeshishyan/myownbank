@@ -13,7 +13,7 @@ export function CashOut() {
   const [input, setInput] = useState('');
   const navigate = useNavigate();
 
-  const {userId} = useContext(AuthContext);
+  const { userId } = useContext(AuthContext);
 
   useEffect(() => {
     loadingData()
@@ -35,7 +35,7 @@ export function CashOut() {
       }).then(res => {
         setCards(res.data);
       })
-      
+
 
     } catch (error) {
       console.log(error);
@@ -69,7 +69,12 @@ export function CashOut() {
       return setModalText('You cannot select a number greater than the value.');
     }
 
-    const today = new Date().toISOString().split('T')[0];
+    // today
+    const date = new Date();
+    const month = String(date.getMonth()).length === 1 ? '0' + (date.getMonth() + 1) :
+      date.getMonth() + 1;
+    const today = `${month}.${date.getDate()}.${date.getFullYear()}`;
+
     const newHistory = ['Cash Out', today, `-$${input}`];
 
     currentCard.card[0].price -= Number(input);
@@ -77,7 +82,7 @@ export function CashOut() {
 
     // await axios.put(`cards/${currentCard.id}`, currentCard);
 
-    await axios.put(`api/cards/cash/card/${currentCard._id}`, {card: currentCard}, {
+    await axios.put(`api/cards/cash/card/${currentCard._id}`, { card: currentCard }, {
       headers: {
         'Content-Type': 'application/json',
       }

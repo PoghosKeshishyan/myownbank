@@ -64,20 +64,21 @@ export function CashInput() {
       return setModalText('After 0 you need to add "." or ', '');
     }
 
-    const today = new Date().toISOString().split('T')[0];
-    const newHistory = ['Cash Input', today, `+$${input}`];
+    // today
+    const date = new Date();
+    const month = String(date.getMonth()).length === 1 ? '0' + (date.getMonth() + 1) :
+                  date.getMonth() + 1;
+    const today = `${month}.${date.getDate()}.${date.getFullYear()}`;
 
+    const newHistory = ['Cash Input', today, `+$${input}`];
     currentCard.card[0].price += Number(input);
     currentCard.card[0].history = [newHistory, ...currentCard.card[0].history];
     
-    // await axios.put(`cards/${currentCard.id}`, currentCard);
-
     await axios.put(`api/cards/cash/card/${currentCard._id}`, {card: currentCard}, {
       headers: {
         'Content-Type': 'application/json',
       }
     })
-    // .then(res => console.log(res))
 
     navigate('/');
   }
