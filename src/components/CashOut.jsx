@@ -73,7 +73,8 @@ export function CashOut() {
     const date = new Date();
     const month = String(date.getMonth()).length === 1 ? '0' + (date.getMonth() + 1) :
       date.getMonth() + 1;
-    const today = `${month}.${date.getDate()}.${date.getFullYear()}`;
+    const day = String(date.getDate()).length === 1 ? '0' + date.getDate() : date.getDate();
+    const today = `${month}.${day}.${date.getFullYear()}`;
 
     const newHistory = ['Cash Out', today, `-$${input}`];
 

@@ -67,8 +67,9 @@ export function CashInput() {
     // today
     const date = new Date();
     const month = String(date.getMonth()).length === 1 ? '0' + (date.getMonth() + 1) :
-                  date.getMonth() + 1;
-    const today = `${month}.${date.getDate()}.${date.getFullYear()}`;
+                  date.getMonth() + 1;        
+    const day = String(date.getDate()).length === 1 ? '0' + date.getDate() : date.getDate();
+    const today = `${month}.${day}.${date.getFullYear()}`;
 
     const newHistory = ['Cash Input', today, `+$${input}`];
     currentCard.card[0].price += Number(input);
