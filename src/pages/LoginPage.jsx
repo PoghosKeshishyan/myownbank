@@ -74,7 +74,6 @@ export function LoginPage() {
 
             <div className='logo-auth'>
                 <img src='/images/logo.png' alt='logo' />
-                v.2.0
             </div>
 
             <form onSubmit={sumbitHandler}>
