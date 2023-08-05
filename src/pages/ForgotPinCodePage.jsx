@@ -15,6 +15,8 @@ export function ForgotPinCode() {
               headers: {
                 'Content-Type': 'application/json',
               }
+            }).then(() => {
+              navigate('/login')
             })
       
           } catch (error) {
