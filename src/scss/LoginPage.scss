@@ -118,18 +118,22 @@
             }
         }
 
-        .createAccount {
-            display: block;
-            text-align: end;
-            color: var(--blue);
-            font-family: 'Noto Sans Syloti Nagri', sans-serif;
-        }
-
-        .createAccount2 {
+        .forgotPass {
             display: block;
             text-align: left;
             color: var(--blue);
             font-family: 'Noto Sans Syloti Nagri', sans-serif;
+        }
+
+        .btns {
+            display: flex;
+            justify-content: space-between;
+            font-size: .9rem;
+            font-family: 'Noto Sans Syloti Nagri', sans-serif;
+            
+            a {
+                color: var(--blue2);
+            }
         }
     }
 }

@@ -23,6 +23,7 @@
 :root {
     --red: rgb(239 68 68);
     --blue: rgb(37 99 235);
+    --blue2: rgb(0, 0, 255);
     --orange: rgb(255 163 0);
     --purple: rgb(132 114 226);
     --green: rgb(0, 150, 136);
@@ -97,12 +98,17 @@ body.active {
     }
 
     .fa-house,
+    .fa-circle-left,
     .fa-circle-left {
         position: absolute;
         top: 70px;
         left: 20px;
         font-size: 1.3rem;
         color: var(--blue-to-white);
+    }
+
+    .fa-circle-left {
+        top: 50px;
     }
 
     .btn {

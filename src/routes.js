@@ -7,6 +7,7 @@ import { AddCardPage } from './pages/AddCardPage';
 import { CashPage } from './pages/CashPage';
 import { TransferPage } from './pages/TransferPage';
 import { AboutPage } from './pages/AboutPage';
+import { AboutPageForAdmin } from './pages/AboutPageForAdmin';
 import { AuthPage } from './pages/AuthPage';
 import { LoginPage } from './pages/LoginPage';
 import { ProfileEditPage } from './pages/ProfileEditPage';
@@ -38,6 +39,7 @@ export function useRoutes(isLogin) {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/registration' element={<AuthPage />} />
             <Route path='/forgot' element={<ForgotPinCode />} />
+            <Route path='/about' element={<AboutPageForAdmin />} />
             <Route path='*' element={<Navigate to='/login' />} />
         </Routes>
     )

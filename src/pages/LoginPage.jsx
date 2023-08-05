@@ -99,7 +99,7 @@ export function LoginPage() {
                     <i className='fa-regular fa-eye-slash' onClick={handlerEye}></i>
                 </div>
 
-                <Link className='createAccount2' to='/forgot'>Forgot password ?</Link>
+                <Link className='forgotPass' to='/forgot'>Forgot password ?</Link>
 
                 <input 
                   type='submit' 
@@ -108,7 +108,10 @@ export function LoginPage() {
                 /> 
             </form>
 
-            <Link className='createAccount' to='/registration'>Create account ?</Link>
+            <div className="btns">
+                <Link to='/about'>How to use this program ?</Link>
+                <Link to='/registration'>Create account ?</Link>
+            </div>
         </div>
     )
 }
