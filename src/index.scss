@@ -25,7 +25,6 @@
     --blue: rgb(37 99 235);
     --blue2: rgb(0, 0, 255);
     --orange: rgb(255 163 0);
-    --purple: rgb(132 114 226);
     --green: rgb(0, 150, 136);
     --white: rgb(255 255 255);
     --black: rgb(0 0 0);
@@ -172,7 +171,7 @@ body.active {
             }
 
             .modal_btn_yes {
-                background-color: var(--purple);
+                background-color: var(--blue);
             }
 
             .modal_btn_cancel {

@@ -98,7 +98,7 @@ export function CashOut() {
       <Modal_v2 modal={modal} setModal={setModal} modalText={modalText} />
 
       <form className='cashForm' onSubmit={onSubmit} data-aos='zoom-in'>
-        <select className='cashInputSelect' defaultValue='Accounts' onChange={onChangeSelect}>
+        <select className='cashOutSelect' defaultValue='Accounts' onChange={onChangeSelect}>
           <option defaultValue="Accounts" disabled>Accounts</option>
 
           {
@@ -113,11 +113,11 @@ export function CashOut() {
           value={input}
           placeholder='0.00'
           disabled={editInput}
-          className='cashInputText'
+          className='cashOutText'
           onChange={e => setInput(e.target.value)}
         />
 
-        <button className='cashInputButton'>Out</button>
+        <button className='cashOutButton'>Out</button>
       </form>
     </>
   )

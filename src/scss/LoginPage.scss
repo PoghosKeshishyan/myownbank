@@ -15,7 +15,7 @@
             p {
                 text-align: left;
                 font-weight: bold;
-                color: var(--purple);
+                color: var(--blue);
                 font-family: 'Delius', cursive;
             }
 
@@ -26,7 +26,7 @@
                 padding-bottom: 3px;
                 background: none;
                 font-size: 1.1rem;
-                border-bottom: 2px solid var(--purple);
+                border-bottom: 2px solid var(--blue);
                 font-family: 'Noto Sans Syloti Nagri', sans-serif;
             }
 
@@ -36,7 +36,7 @@
                 justify-content: space-between;
                 margin: 10px 0;
                 padding-bottom: 3px;
-                border-bottom: 2px solid var(--purple);
+                border-bottom: 2px solid var(--blue);
 
                 input {
                     width: 100%;
@@ -76,7 +76,7 @@
                     place-content: center;
                     background-color: var(--white);
                     transform: translateY(-0.075em);
-                    border: 1.5px solid var(--purple);
+                    border: 1.5px solid var(--blue);
 
                     &::before {
                         content: '';
@@ -85,7 +85,7 @@
                         transform: scale(0);
                         transform-origin: center;
                         transition: 120ms transform linear;
-                        box-shadow: inset 1em 1em var(--purple);
+                        box-shadow: inset 1em 1em var(--blue);
                         clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
                     }
 

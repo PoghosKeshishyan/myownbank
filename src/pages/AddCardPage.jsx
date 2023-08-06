@@ -127,7 +127,7 @@ export function AddCardPage() {
             </div>
 
             <div className='code'>
-              <p className='chipCode'>**** **** **** 000{cards.length + 1}</p>
+              <p className='chipCode'>0000 0000 0000 0000</p>
               <img src='/images/nfc.png' className='nfcImg' alt='nfc' />
             </div>
           </div>
