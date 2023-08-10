@@ -12,7 +12,7 @@ export function EditCardPage() {
 
   useEffect(() => {
     loadingData()
-  }, []);
+  });
 
   async function loadingData() {
     try {

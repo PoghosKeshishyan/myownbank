@@ -22,7 +22,7 @@ export function AddCard() {
             </div>
 
             <div className='code'>
-                <p className='chipCode'>0000 0000 0000 0001</p>
+                <p className='chipCode'>0000 0000 0000 0020</p>
                 <img src='/images/nfc.png' className='nfcImg' alt='nfc' />
             </div>
         </div>

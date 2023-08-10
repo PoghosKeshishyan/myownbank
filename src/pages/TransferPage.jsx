@@ -19,7 +19,7 @@ export function TransferPage() {
 
   useEffect(() => { 
     loadingDatas() 
-  }, []);
+  });
 
   const handleModalYesBtn = () => setModal(false);
 

@@ -17,7 +17,7 @@ export function TransferToFriendPage() {
 
     useEffect(() => {
         loadingData()
-    }, []);
+    });
 
     const onChangeSelect = (e) => {
         const res = cards.filter(el => el._id === e.target.value);

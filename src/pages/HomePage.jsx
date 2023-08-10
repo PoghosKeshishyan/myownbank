@@ -14,7 +14,7 @@ export function HomePage() {
 
   useEffect(() => {
     loadingData();
-  }, []);
+  });
 
   useEffect(() => {
     // sum for total varible

@@ -5,7 +5,7 @@ import axios from '../axios';
 import '../scss/Header.scss';
 
 export function Header() {
-    const { name, avatar, logout, userId } = useContext(AuthContext);
+    const {name, avatar, logout, userId} = useContext(AuthContext);
     const [modal, setModal] = useState(false);
     const [cards, setCards] = useState([]);
     const [modalDeleteAccount, setModalDeleteAccount] = useState(false);
@@ -19,7 +19,7 @@ export function Header() {
     useEffect(() => {
         loadingData();
         window.addEventListener('mousedown', handleClickOutSide);
-    }, [])
+    })
 
     async function loadingData() {
         try {

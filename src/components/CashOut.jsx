@@ -16,7 +16,7 @@ export function CashOut() {
 
   useEffect(() => {
     loadingData()
-  }, []);
+  });
 
   async function loadingData() {
     try {

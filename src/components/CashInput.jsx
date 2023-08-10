@@ -14,6 +14,10 @@ export function CashInput() {
   const { userId } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    loadingData();
+  });
+
   const loadingData = async() => {
     try {
       await axios.get('api/cards/', {
@@ -29,10 +33,6 @@ export function CashInput() {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    loadingData();
-  }, []);
 
   const onChangeSelect = (e) => {
     const res = cards.filter(el => el._id === e.target.value);

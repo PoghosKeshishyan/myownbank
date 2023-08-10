@@ -12,7 +12,7 @@ export function HistoryPage() {
 
     useEffect(() => {
         loadingData()
-    }, []);
+    });
 
     async function loadingData() {
         try {
