@@ -17,7 +17,7 @@ export function SwiperCards({cards}) {
             modules={[EffectCards]}
         >
             {
-                cards.length > 0 && cards.map((el, index) =>
+                cards.length > 0 && cards.map(el =>
                     <SwiperSlide
                         key={el._id}
                         style={{ background: el.card[0].bgColor }}

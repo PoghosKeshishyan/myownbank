@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { NavLink } from 'react-router-dom';
 import '../scss/Footer.scss';
 
 export function Footer() {
     const [modal, setModal] = useState(false);
-
-    const {logout} = useContext(AuthContext);
+    const { logout } = useContext(AuthContext);
 
     return (
         <React.Fragment>
@@ -18,7 +17,9 @@ export function Footer() {
 
                     <div className='buttonsModal'>
                         <button onClick={logout} className='modal_btn_yes'>Yes</button>
-                        <button className='modal_btn_cancel' onClick={() => setModal(false)}>Cancel</button>
+                        <button className='modal_btn_cancel' onClick={() => setModal(false)}>
+                            Cancel
+                        </button>
                     </div>
                 </div>
             </div>

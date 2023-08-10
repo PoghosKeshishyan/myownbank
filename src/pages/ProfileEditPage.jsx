@@ -1,23 +1,15 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../scss/ProfileEditPage.scss';
 import { AuthContext } from '../context/AuthContext';
+import '../scss/ProfileEditPage.scss';
 import axios from '../axios';
 
 export function ProfileEditPage() {
-
-    const navigate = useNavigate();
-
-
-    const { avatar, name, userId: id } = useContext(AuthContext);
-
-
     const [userName, setUserName] = useState(name);
     const [logoAvatar, setLogoAvatar] = useState(avatar);
-
-
+    const { avatar, name, userId: id } = useContext(AuthContext);
     const sumbmitIcons = (e) => setLogoAvatar(e.target.className);
-
+    const navigate = useNavigate();
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -37,21 +29,6 @@ export function ProfileEditPage() {
                 window.location.reload();
             }
         })
-
-
-        // localStorage.setItem('myOwnBank_userName', userName);
-        // localStorage.setItem('myOwnBank_userAvatar', logoAvatar);
-
-        // if (userPinCode) {
-        //     localStorage.setItem('myOwnBank_userPinCode', userPinCode);
-        // }
-
-        // dispatch({
-        //     type: 'editProfile',
-        //     payload: { userName: userName, logoAvatar: logoAvatar }
-        // })
-
-        // navigate('/');
     }
 
     return (
@@ -60,7 +37,12 @@ export function ProfileEditPage() {
 
             <form className='ProfileEditPage' onSubmit={submitHandler} data-aos='zoom-in'>
                 <p className="title">Change your name</p>
-                <input type="text" className='name' value={userName} onChange={e => setUserName(e.target.value)} />
+                <input 
+                  type="text" 
+                  className='name' 
+                  value={userName} 
+                  onChange={e => setUserName(e.target.value)} 
+                />
 
                 <div className="profileAvatar">
                     <p className='title'>Change your user logo</p>

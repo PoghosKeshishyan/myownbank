@@ -1,46 +1,16 @@
-import { AuthContext } from '../context/AuthContext'
-import { useEffect, useContext, useState } from 'react'
+import { useContext, useState } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Modal_v2 } from '../components/Modal_v2';
 import '../scss/AddCardPage.scss';
 import axios from '../axios';
 
 export function AddCardPage() {
-  const [cards, setCards] = useState([]);
   const [modal, setModal] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [bgColor, setBgColor] = useState('rgb(255 255 255)');
-  const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
-
-  useEffect(() => {
-    loadingData();
-  }, [])
-
-  async function loadingData() {
-    // const response = await axios.get('cards');
-    // setCards(response.data);
-
-
-    try {
-
-      await axios.get('api/cards/', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        // sa beq e gnum, ev darnum e req.query
-        params: { userId }
-      }).then(res => {
-        setCards(res.data);
-      })
-      
-
-    } catch (error) {
-      console.log(error);
-    }
-
-
-  }
+  const navigate = useNavigate();
 
   const changeBgColorHandler = (e) => {
     if(e.target.style.backgroundColor) {
@@ -55,17 +25,15 @@ export function AddCardPage() {
       title: inputValue,
       price: 0,
       history: [],
-      bgColor
+      bgColor,
     }
 
     try {
-
       await axios.post('api/cards/add', { newCard, userId }, {
         headers: {
           'Content-Type': 'application/json',
         }
       })
-
     } catch (error) {
       console.log(error);
     }

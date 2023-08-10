@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Modal_v2 } from '../components/Modal_v2';
 import '../scss/AuthPage.scss';
 import axios from '../axios';
-import { Modal_v2 } from '../components/Modal_v2';
 
 export function AuthPage() {
     const navigate = useNavigate();
@@ -16,15 +16,8 @@ export function AuthPage() {
     const [modal, setModal] = useState(false);
     const [modalText, setModalText] = useState('');
     
-
     const onChangeInput = (e) => {
         setNewUser({ ...newUser, [e.target.name]: e.target.value });
-    }
-
-    const onPasswordChange = (e) => {
-        let value = e.target.value;
-        value = value.replace(/\D/g, '');
-        onChangeInput(e);
     }
 
     const handlerEye = (e) => {
@@ -101,7 +94,7 @@ export function AuthPage() {
                         name='password'
                         type={inputType}
                         value={newUser.password}
-                        onChange={onPasswordChange}
+                        onChange={onChangeInput}
                     />
                     <i className='fa-regular fa-eye-slash' onClick={handlerEye}></i>
                 </div>

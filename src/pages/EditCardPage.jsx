@@ -7,17 +7,15 @@ export function EditCardPage() {
   const [card, setCard] = useState({});
   const [inputValue, setInputValue] = useState('');
   const [bgColor, setBgColor] = useState('');
-  const { id } = useParams();
   const navigate = useNavigate();
+  const { id } = useParams();
 
   useEffect(() => {
     loadingData()
   }, []);
 
   const loadingData = async () => {
-
     try {
-
       await axios.get('api/cards/' + id, {
         headers: {
           'Content-Type': 'application/json',
@@ -29,17 +27,9 @@ export function EditCardPage() {
         setInputValue(res.data.card[0].title);
         setBgColor(res.data.card[0].bgColor);
       })
-
-
     } catch (error) {
       console.log(error);
     }
-
-
-    // const response = await axios.get(`cards/${id}`);
-    // setCard(response.data);
-    // setInputValue(response.data.title);
-    // setBgColor(response.data.bgColor);
   }
 
   const changeBgColorHandler = (e) => {
@@ -54,8 +44,6 @@ export function EditCardPage() {
     card.card[0].title = inputValue;
     card.card[0].bgColor = bgColor;
 
-
-     // await axios.put(`cards/${id}`, card);
     await axios.put(`api/cards/update/card/${id}`, card, {
       headers: {
         'Content-Type': 'application/json',
@@ -68,7 +56,6 @@ export function EditCardPage() {
   return (
     <>
       <i className='fa-solid fa-house' onClick={() => navigate('/')} />
-
 
       {card._id &&
         <div className='EditCardPage' data-aos='zoom-in'>
@@ -93,8 +80,6 @@ export function EditCardPage() {
               </div>
 
               <div className='code'>
-                {/* <p className='chipCode'>**** **** **** 000{Number(index)+1} */}
-                {/* </p> */}
                 <p className='chipCode'>{card.cardNumber}</p>
                 <img src='/images/nfc.png' className='nfcImg' alt='nfc' />
               </div>

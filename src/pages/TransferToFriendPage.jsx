@@ -7,16 +7,13 @@ import axios from '../axios';
 export function TransferToFriendPage() {
     const [modal, setModal] = useState(false);
     const [modalText, setModalText] = useState('');
-
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const { userId } = useContext(AuthContext);
     const [editInput, setEditInput] = useState(true);
-
     const [input, setInput] = useState('');
-
     const [cards, setCards] = useState([]);
     const [card, setCard] = useState({});
+    const { userId } = useContext(AuthContext);
+    const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadingData()
@@ -84,7 +81,7 @@ export function TransferToFriendPage() {
                         onChange={onChangeSelect}
                     >
                         <option value="Accounts" disabled="disabled">Accounts</option>
-                        {cards.map((el, index) => <option value={el._id} key={el._id}>{el.card[0].title}</option>)}
+                        {cards.map(el => <option value={el._id} key={el._id}>{el.card[0].title}</option>)}
                     </select>
 
                     <input

@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Modal_v2 } from './Modal_v2';
 import axios from '../axios';
-import { AuthContext } from '../context/AuthContext';
 
 export function CashOut() {
   const [cards, setCards] = useState([]);
@@ -11,21 +11,15 @@ export function CashOut() {
   const [editInput, setEditInput] = useState(true);
   const [modalText, setModalText] = useState('');
   const [input, setInput] = useState('');
-  const navigate = useNavigate();
-
   const { userId } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadingData()
   }, []);
 
   const loadingData = async () => {
-    // const response = await axios.get('cards');
-    // setCards(response.data);
-
-
     try {
-
       await axios.get('api/cards/', {
         headers: {
           'Content-Type': 'application/json',
@@ -35,18 +29,13 @@ export function CashOut() {
       }).then(res => {
         setCards(res.data);
       })
-
-
     } catch (error) {
       console.log(error);
     }
-
-
-
   };
 
   const onChangeSelect = (e) => {
-    const res = cards.filter(el => el._id == e.target.value);
+    const res = cards.filter(el => el._id === e.target.value);
     setCurrentCard(res[0]);
     setEditInput(false);
   }
@@ -71,17 +60,14 @@ export function CashOut() {
 
     // today
     const date = new Date();
-    const month = String(date.getMonth()).length === 1 ? '0' + (date.getMonth() + 1) :
-      date.getMonth() + 1;
+    const month = String(date.getMonth()).length === 1 ? '0' + 
+                  (date.getMonth() + 1) : date.getMonth() + 1;
     const day = String(date.getDate()).length === 1 ? '0' + date.getDate() : date.getDate();
     const today = `${month}.${day}.${date.getFullYear()}`;
 
     const newHistory = ['Cash Out', today, `-$${input}`];
-
     currentCard.card[0].price -= Number(input);
     currentCard.card[0].history = [newHistory, ...currentCard.card[0].history];
-
-    // await axios.put(`cards/${currentCard.id}`, currentCard);
 
     await axios.put(`api/cards/cash/card/${currentCard._id}`, { card: currentCard }, {
       headers: {
@@ -91,7 +77,6 @@ export function CashOut() {
 
     navigate('/');
   }
-
 
   return (
     <>

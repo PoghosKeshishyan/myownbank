@@ -10,15 +10,12 @@ export function HistoryPage() {
     const { id } = useParams();
     const navigate = useNavigate();
 
-
     useEffect(() => {
         loadingData()
     }, []);
 
     const loadingData = async () => {
-
         try {
-
             await axios.get('api/cards/' + id, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -28,12 +25,9 @@ export function HistoryPage() {
             }).then(res => {
                 setCard(res.data);
             })
-
-
         } catch (error) {
             console.log(error);
         }
-
     }
 
     const submitDeleteCard = async () => {
@@ -42,11 +36,7 @@ export function HistoryPage() {
     }
 
     const removeCard = async () => {
-        // await axios.delete(`cards/${id}`);
-        // navigate('/')
-
         try {
-
             await axios.delete('api/cards/delete/' + id, { id }, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,12 +44,9 @@ export function HistoryPage() {
             }).then(() => {
                 navigate('/');
             })
-
         } catch (error) {
             console.log(error);
         }
-
-
     }
 
     return (
@@ -106,7 +93,7 @@ export function HistoryPage() {
                             <i className='fa-solid fa-trash' onClick={submitDeleteCard}></i>
                         </div>
                     }
-                    
+
                     <div className='card'
                         style={{ background: card.card[0].bgColor }}
                     >
@@ -125,8 +112,6 @@ export function HistoryPage() {
                         </div>
 
                         <div className='code'>
-                            {/* <p className='chipCode'>**** **** **** 000{Number(index) + 1} */}
-                            {/* </p> */}
                             <p className='chipCode'>{card.cardNumber}</p>
                             <img src='/images/nfc.png' className='nfcImg' alt='nfc' />
                         </div>

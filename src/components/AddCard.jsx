@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-export function AddCard({cards}) {
+export function AddCard() {
     const navigate = useNavigate();
 
     const onClickHandler = () => {
@@ -22,7 +22,7 @@ export function AddCard({cards}) {
             </div>
 
             <div className='code'>
-                <p className='chipCode'>0000 0000 0000 0000</p>
+                <p className='chipCode'>0000 0000 0000 0001</p>
                 <img src='/images/nfc.png' className='nfcImg' alt='nfc' />
             </div>
         </div>

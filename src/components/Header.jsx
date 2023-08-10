@@ -1,25 +1,20 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { NavLink, Link } from 'react-router-dom';
-import { Modal_v1 } from './Modal_v1';
 import axios from '../axios';
 import '../scss/Header.scss';
-import { AuthContext } from '../context/AuthContext';
 
 export function Header() {
-    const [user, setUser] = useState({});
+    const { name, avatar, logout, userId } = useContext(AuthContext);
     const [modal, setModal] = useState(false);
     const [cards, setCards] = useState([]);
-
     const [modalDeleteAccount, setModalDeleteAccount] = useState(false);
     const [confirmDeleteAccountModal, setConfirmDeleteAccountModal] = useState(false)
-
     const [menuOpened, setMenuOpened] = useState(false);
     const [settingsOpened, setSettingsOpened] = useState(false);
     const [inputChecked, setInputChecked] = useState(false);
     const navRef = useRef(null);
     const settRef = useRef(null);
-
-    const { name, avatar, logout, userId } = useContext(AuthContext);
 
     useEffect(() => {
         loadingData();
@@ -27,10 +22,7 @@ export function Header() {
     }, [])
 
     async function loadingData() {
-
-
         try {
-
             await axios.get('api/cards/', {
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,16 +32,9 @@ export function Header() {
             }).then(res => {
                 setCards(res.data);
             })
-
-
         } catch (error) {
             console.log(error);
         }
-
-
-
-        // const response = await axios.get('user');
-        // setUser(response.data);
 
         // loading Display Theme
         if (localStorage.getItem('myOwnBank_theme') === 'dark') {
@@ -64,15 +49,11 @@ export function Header() {
                 if (e.target.className !== 'img') setMenuOpened(false);
                 setTimeout(() => setMenuOpened(false), 100);
             };
-        } catch { }
 
-        try {
             if (!settRef.current.contains(e.target.parentElement)) {
                 setSettingsOpened(false);
             };
-        } catch { }
 
-        try {
             if (e.target.tagName === 'A') {
                 setTimeout(() => setSettingsOpened(false), 100);
             };
@@ -160,6 +141,7 @@ export function Header() {
                     </div>
                 </div>
             </div>
+
             <header>
                 <i
                     ref={navRef}
@@ -204,7 +186,12 @@ export function Header() {
 
                     <div className='switch'>
                         Dark mode
-                        <input type='checkbox' className='settInput' checked={inputChecked} onChange={darkModeFunc} />
+                        <input 
+                          type='checkbox' 
+                          className='settInput' 
+                          checked={inputChecked} 
+                          onChange={darkModeFunc} 
+                        />
                     </div>
 
                     <div className='deleteAccount' onClick={deleteAccountFunction}>

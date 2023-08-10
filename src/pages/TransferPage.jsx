@@ -1,35 +1,27 @@
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import '../scss/TransferPage.scss';
-import axios from '../axios';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import axios from '../axios';
+import '../scss/TransferPage.scss';
 
 export function TransferPage() {
   const [modal, setModal] = useState(false);
   const [modalText, setModalText] = useState('');
-
   const [users, setUsers] = useState([]);
-
   const [cards, setCards] = useState([]);
   const [cardFrom, setCardFrom] = useState({});
   const [cardTo, setCardTo] = useState({});
-
-
   const [input, setInput] = useState('');
   const navigate = useNavigate();
-
-
   const [inputWitfTransferTofriends, setInputWitfTransferTofriends] = useState('');
-
-
   const [activeRoute, setActiveRoute] = useState(true);
-
-
   const { userId } = useContext(AuthContext);
 
-  useEffect(() => { loadingDatas() }, []);
-  const handleModalYesBtn = () => setModal(false);
+  useEffect(() => { 
+    loadingDatas() 
+  }, []);
 
+  const handleModalYesBtn = () => setModal(false);
 
   const onChangeSelectFrom = (e) => {
     const res = cards.filter(el => el._id == e.target.value);
@@ -41,16 +33,8 @@ export function TransferPage() {
     setCardTo(res[0]);
   }
 
-
   const loadingDatas = async () => {
-    // if (localStorage.getItem('myOwnBank_data')) {
-    //   const result = JSON.parse(localStorage.getItem('myOwnBank_data'));
-    //   setDatas(result);
-    // }
-
-
     try {
-
       await axios.get('api/cards/', {
         headers: {
           'Content-Type': 'application/json',
@@ -60,13 +44,9 @@ export function TransferPage() {
       }).then(res => {
         setCards(res.data);
       })
-
-
     } catch (error) {
       console.log(error);
     }
-
-
   };
 
   const onSubmit = async (e) => {
@@ -95,20 +75,17 @@ export function TransferPage() {
     cardFrom.card[0].price -= input;
     cardTo.card[0].price += Number(input);
 
-
     // today
     const date = new Date();
-    const month = String(date.getMonth()).length === 1 ? '0' + (date.getMonth() + 1) :
-      date.getMonth() + 1;
+    const month = String(date.getMonth()).length === 1 ? '0' + 
+                  (date.getMonth() + 1) : date.getMonth() + 1;
     const day = String(date.getDate()).length === 1 ? '0' + date.getDate() : date.getDate();
     const today = `${month}.${day}.${date.getFullYear()}`;
     
     const newFromHistory = [`to ${cardTo.card[0].title}`, today, `-$${input}`];
     const newToHistory = [`from ${cardFrom.card[0].title}`, today, `+$${input}`];
-
     cardFrom.card[0].history = [newFromHistory, ...cardFrom.card[0].history];
     cardTo.card[0].history = [newToHistory, ...cardTo.card[0].history];
-
 
     await axios.put(`api/cards/cash/card/${cardFrom._id}`, { card: cardFrom }, {
       headers: {
@@ -122,7 +99,6 @@ export function TransferPage() {
       }
     })
 
-    // localStorage.setItem('myOwnBank_data', JSON.stringify(datas));
     navigate('/');
   }
 
@@ -136,13 +112,11 @@ export function TransferPage() {
         'Content-Type': 'application/json',
       }
     }).then(response => {
-
       const allUsers = response.data;
       const inputValue = inputWitfTransferTofriends.toLowerCase();
 
       const newUsers = allUsers.filter(user => user.name.toLowerCase().includes(inputValue));
       setUsers(newUsers);
-
     })
 
   }

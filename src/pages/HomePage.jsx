@@ -37,12 +37,9 @@ export function HomePage() {
         setCards(res.data);
         setLoading(false);
       })
-
-
     } catch (error) {
       console.log(error);
     }
-
   }
 
   return (

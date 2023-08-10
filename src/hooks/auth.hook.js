@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
 export function useAuth() {
     const [token, setToken] = useState(null);
@@ -7,7 +7,6 @@ export function useAuth() {
     const [avatar, setAvatar] = useState(null);
     const [isReady, setIsReady] = useState(false);
 
-    // useCallback
     const login = useCallback((jwtToken, id, name, avatar) => {
         setToken(jwtToken);
         setUserId(id);

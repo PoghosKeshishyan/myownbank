@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import '../scss/AboutPage.scss';
 import { RWebShare } from "react-web-share";
-
+import '../scss/AboutPage.scss';
 
 export function AboutPage() {
     const navigate = useNavigate();
@@ -20,14 +19,14 @@ export function AboutPage() {
                     <RWebShare
                         data={{
                             title: "My Own Bank",
-                            url: "https://myownbank.pro",
                             text: "My Own Bank",
+                            url: "https://myownbank.pro",
                         }}
                     >
-                        <div className='shareBtn'>
+                        <button className='shareBtn'>
                             <i className="fa-solid fa-share-nodes"></i>
                             <p>Share</p>
-                        </div>
+                        </button>
                     </RWebShare>
                 </div>
             </div>
