@@ -5,9 +5,9 @@ import '../scss/ProfileEditPage.scss';
 import axios from '../axios';
 
 export function ProfileEditPage() {
+    const { avatar, name, userId: id } = useContext(AuthContext);
     const [userName, setUserName] = useState(name);
     const [logoAvatar, setLogoAvatar] = useState(avatar);
-    const { avatar, name, userId: id } = useContext(AuthContext);
     const sumbmitIcons = (e) => setLogoAvatar(e.target.className);
     const navigate = useNavigate();
 

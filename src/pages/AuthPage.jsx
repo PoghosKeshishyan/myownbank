@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Modal_v2 } from '../components/Modal_v2';
+import { ModalV2 } from '../components/ModalV2';
 import '../scss/AuthPage.scss';
 import axios from '../axios';
 
@@ -60,7 +60,7 @@ export function AuthPage() {
     return (
         <div className='AuthPage'>
 
-            <Modal_v2 modal={modal} setModal={setModal} modalText={modalText} />
+            <ModalV2 modal={modal} setModal={setModal} modalText={modalText} />
 
             <div className='logo-auth'>
                 <img src='/images/logo.png' alt='logo' />

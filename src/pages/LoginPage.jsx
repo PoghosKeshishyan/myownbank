@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { Modal_v2 } from '../components/Modal_v2';
+import { ModalV2 } from '../components/ModalV2';
 import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import axios from '../axios';
@@ -16,12 +16,6 @@ export function LoginPage() {
 
     const onChangeInput = (e) => {
         setNewUser({ ...newUser, [e.target.name]: e.target.value });
-    }
-
-    const onPasswordChange = (e) => {
-        let value = e.target.value;
-        value = value.replace(/\D/g, '');
-        onChangeInput(e);
     }
 
     const handlerEye = (e) => {
@@ -57,7 +51,7 @@ export function LoginPage() {
     return (
         <div className='LoginPage'>
 
-            <Modal_v2 modal={modal} setModal={setModal} modalText={modalText} />
+            <ModalV2 modal={modal} setModal={setModal} modalText={modalText} />
 
             <div className='logo-auth'>
                 <img src='/images/logo.png' alt='logo' />
@@ -81,7 +75,7 @@ export function LoginPage() {
                         name='password'
                         type={inputType}
                         value={newUser.password}
-                        onChange={onPasswordChange}
+                        onChange={onChangeInput}
                     />
                     <i className='fa-regular fa-eye-slash' onClick={handlerEye}></i>
                 </div>

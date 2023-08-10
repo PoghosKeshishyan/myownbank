@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export function Modal_v1({ modal, setModal, modalMessage, navigatePage }) {
+export function ModalV1({ modal, setModal, modalMessage, navigatePage }) {
   return (
     <div className={modal ? 'modal activeModal' : 'modal'}>
       <div className='modalBackground' onClick={() => setModal(false)}></div>

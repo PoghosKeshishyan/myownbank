@@ -24,16 +24,16 @@ export function TransferPage() {
   const handleModalYesBtn = () => setModal(false);
 
   const onChangeSelectFrom = (e) => {
-    const res = cards.filter(el => el._id == e.target.value);
+    const res = cards.filter(el => el._id === e.target.value);
     setCardFrom(res[0]);
   }
 
   const onChangeSelectTo = (e) => {
-    const res = cards.filter(el => el._id == e.target.value);
+    const res = cards.filter(el => el._id === e.target.value);
     setCardTo(res[0]);
   }
 
-  const loadingDatas = async () => {
+  async function loadingDatas() {
     try {
       await axios.get('api/cards/', {
         headers: {

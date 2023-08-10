@@ -20,12 +20,12 @@ export function TransferToFriendPage() {
     }, []);
 
     const onChangeSelect = (e) => {
-        const res = cards.filter(el => el._id == e.target.value);
+        const res = cards.filter(el => el._id === e.target.value);
         setCard(res[0]);
         setEditInput(false);
     }
 
-    const loadingData = async () => {
+    async function loadingData() {
         try {
             await axios.get('api/cards/', {
                 headers: {

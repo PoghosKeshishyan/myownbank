@@ -23,10 +23,8 @@ export function HomePage() {
     setTotalSum(sum);
   }, [cards])
 
-  const loadingData = async () => {
-
+  async function loadingData() {
     try {
-
       await axios.get('api/cards/', {
         headers: {
           'Content-Type': 'application/json',

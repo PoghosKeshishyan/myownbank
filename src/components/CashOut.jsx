@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Modal_v2 } from './Modal_v2';
+import { ModalV2 } from './ModalV2';
 import axios from '../axios';
 
 export function CashOut() {
@@ -18,7 +18,7 @@ export function CashOut() {
     loadingData()
   }, []);
 
-  const loadingData = async () => {
+  async function loadingData() {
     try {
       await axios.get('api/cards/', {
         headers: {
@@ -80,7 +80,7 @@ export function CashOut() {
 
   return (
     <>
-      <Modal_v2 modal={modal} setModal={setModal} modalText={modalText} />
+      <ModalV2 modal={modal} setModal={setModal} modalText={modalText} />
 
       <form className='cashForm' onSubmit={onSubmit} data-aos='zoom-in'>
         <select className='cashOutSelect' defaultValue='Accounts' onChange={onChangeSelect}>

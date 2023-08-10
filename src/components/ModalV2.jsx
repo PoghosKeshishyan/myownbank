@@ -1,4 +1,4 @@
-export function Modal_v2({modal, setModal, modalText}) {
+export function ModalV2({modal, setModal, modalText}) {
     return (
         <div className={modal ? 'modal activeModal' : 'modal'}>
             <div className='modalBackground' onClick={() => setModal(false)}></div>

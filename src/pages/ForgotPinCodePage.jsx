@@ -18,7 +18,6 @@ export function ForgotPinCode() {
       }).then(() => {
         navigate('/login')
       })
-
     } catch (error) {
       console.log(error);
     }

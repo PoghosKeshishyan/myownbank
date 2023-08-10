@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Modal_v2 } from './Modal_v2';
+import { ModalV2 } from './ModalV2';
 import axios from '../axios';
 
 export function CashInput() {
@@ -14,11 +14,7 @@ export function CashInput() {
   const { userId } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    loadingData();
-  }, []);
-
-  const loadingData = async () => {
+  const loadingData = async() => {
     try {
       await axios.get('api/cards/', {
         headers: {
@@ -33,6 +29,10 @@ export function CashInput() {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    loadingData();
+  }, []);
 
   const onChangeSelect = (e) => {
     const res = cards.filter(el => el._id === e.target.value);
@@ -76,7 +76,7 @@ export function CashInput() {
 
   return (
     <>
-      <Modal_v2 modal={modal} setModal={setModal} modalText={modalText} />
+      <ModalV2 modal={modal} setModal={setModal} modalText={modalText} />
 
       <form className='cashForm' onSubmit={onSubmit} data-aos='zoom-in'>
         <select className='cashInputSelect' defaultValue='Accounts' onChange={onChangeSelect}>

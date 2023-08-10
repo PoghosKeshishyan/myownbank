@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Modal_v2 } from '../components/Modal_v2';
+import { ModalV2 } from '../components/ModalV2';
 import '../scss/AddCardPage.scss';
 import axios from '../axios';
 
@@ -45,7 +45,7 @@ export function AddCardPage() {
     <>
       <i className='fa-solid fa-house' onClick={() => navigate('/')} />
 
-      <Modal_v2 
+      <ModalV2 
         modal={modal} 
         setModal={setModal} 
         modalText={'You must fill in the "Card name" field.'} 

@@ -14,7 +14,7 @@ export function EditCardPage() {
     loadingData()
   }, []);
 
-  const loadingData = async () => {
+  async function loadingData() {
     try {
       await axios.get('api/cards/' + id, {
         headers: {
