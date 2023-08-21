@@ -57,6 +57,10 @@ export function LoginPage() {
                 <img src='/images/logo.png' alt='logo' />
             </div>
 
+            <div className="message" style={{padding: '10px 0 30px 0', fontFamily: 'Arial', fontSize: '1.2rem', textAlign: 'center', color: 'var(--red)', lineHeight: '25px'}}>
+                The website is under development. We will see you soon.
+            </div>
+
             <form onSubmit={sumbitHandler}>
                 <p>Enter your email</p>
                 <input
@@ -93,6 +97,7 @@ export function LoginPage() {
                 <Link to='/about'>How to use this program ?</Link>
                 <Link to='/registration'>Create account ?</Link>
             </div>
+
         </div>
     )
 }
