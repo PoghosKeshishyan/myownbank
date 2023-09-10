@@ -5,12 +5,12 @@
 
         p {
             text-align: justify;
-            font-size: 1.1rem;
             font-weight: 600;
             color: var(--blue);
             font-family: 'Delius', cursive;
-
+            
             &.aboutText {
+                font-size: 1rem;
                 padding-bottom: 15px;
             }
         }
@@ -20,8 +20,10 @@
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            border-top: 1px solid var(--blue);
-            padding-top: 15px;
+
+            p {
+                font-size: 1rem;
+            }
 
             .shareBtn {
                 background: var(--slate-400);
@@ -31,11 +33,12 @@
                 color: var(--white);
 
                 i {
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                 }
 
                 p {
                     color: var(--white);
+                    font-size: .8rem;
                 }
             }
         }

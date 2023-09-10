@@ -16,11 +16,10 @@
         }
 
         .swiper-wrapper {
-            height: 12rem;
-
             .swiper-slide {
                 padding: 15px;
-                border-radius: 20px;
+                max-height: 13rem;
+                border-radius: 15px;
 
                 .heading {
                     display: flex;

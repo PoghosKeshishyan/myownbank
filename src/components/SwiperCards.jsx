@@ -31,13 +31,13 @@ export function SwiperCards({cards}) {
 
                         <div className='chip'>
                             <img src='/images/chip.jpg' alt='chip' />
-                            <p className='balans'>Balans <span>${el.card[0].price}</span></p>
-                        </div>
+                            <p className='balans'>Balans <span>${el.card[0].price.toLocaleString('en-US')}</span></p>
+                        </div> 
 
                         <div className='code'>
                             <p className='chipCode'>{el.cardNumber}</p>
                             <img src='/images/nfc.png' className='nfcImg' alt='nfc' />
-                        </div>
+                        </div> 
                     </SwiperSlide>
                 )
             }

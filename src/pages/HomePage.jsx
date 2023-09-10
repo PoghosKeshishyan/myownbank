@@ -42,7 +42,7 @@ export function HomePage() {
 
   return (
     <div className='HomePage'>
-      {!loading && cards.length > 0 && <h2>Total Balans <span>${totalSum}</span></h2>}
+      {!loading && cards.length > 0 && <h2>Total Balans <span>${totalSum.toLocaleString('en-US')}</span></h2>}
       {loading ? <Loading /> : <SwiperCards cards={cards} />}
       {!loading && <AddCard cards={cards} />}
     </div>

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { RWebShare } from "react-web-share";
+import { AboutVideos } from '../components/AboutVideos';
 import '../scss/AboutPage.scss';
 
 export function AboutPage() {
@@ -29,6 +30,8 @@ export function AboutPage() {
                         </button>
                     </RWebShare>
                 </div>
+                
+                <AboutVideos />
             </div>
         </>
     )

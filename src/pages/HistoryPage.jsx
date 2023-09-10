@@ -107,7 +107,7 @@ export function HistoryPage() {
                         <div className='chip'>
                             <img src='/images/chip.jpg' alt='chip' />
                             <p className='balans'>Balans
-                                <span>${card.card[0].price}</span>
+                                <span>${card.card[0].price.toLocaleString('en-US')}</span>
                             </p>
                         </div>
 
