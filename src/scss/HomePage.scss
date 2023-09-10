@@ -2,7 +2,7 @@
     .HomePage {
 
         h2 {
-            margin: 5px 0 25px 0;
+            margin: 5px 0 30px 0;
             font-family: 'Adamina', serif;
             color: var(--black-to-blue);
             font-size: 1.4rem;
@@ -16,10 +16,12 @@
         }
 
         .swiper-wrapper {
+            height: 14rem;
+
             .swiper-slide {
                 padding: 15px;
                 max-height: 13rem;
-                border-radius: 15px;
+                border-radius: 20px;
 
                 .heading {
                     display: flex;

@@ -5,15 +5,15 @@ export function AboutVideos() {
         <div className='AboutVideos'>
             <div className="links">
                 <a href='#intro'>Introduction</a>
-                <a href='#registration'>Registration</a>
-                <a href='#cash_input_out'>Cash Input, <br /> Cash Out</a>
-                <a href='#add_card'>Add card</a>
+                <a href='#registration'>Sign Up</a>
+                <a href='#cash_input_out'>Cash Input/Cash Out</a>
+                <a href='#add_card'>Add Card</a>
                 <a href='#transfer'>Transfer</a>
-                <a href='#transfer_to_friends'>Transfer to friends</a>
+                <a href='#transfer_to_friends'>Transfer to Friends</a>
                 <a href='#change_profile'>Change Profile</a>
-                <a href='#dark_mode'>Dark mode</a>
+                <a href='#dark_mode'>Dark Mode</a>
                 <a href='#support'>Support</a>
-                <a href='#delete_accoutn'>Delete account</a>
+                <a href='#delete_accoutn'>Delete Account</a>
             </div>
 
             <div className="videos">

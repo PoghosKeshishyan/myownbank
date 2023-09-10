@@ -58,7 +58,7 @@ export function LoginPage() {
             </div>
 
             <div className="message" style={{padding: '10px 0 30px 0', fontFamily: 'Arial', fontSize: '1.2rem', textAlign: 'center', color: 'var(--red)', lineHeight: '25px'}}>
-                The website is under development. We will see you soon.
+                The website is under development. We will see you soon. | v2.0
             </div>
 
             <form onSubmit={sumbitHandler}>
